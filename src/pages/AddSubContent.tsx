@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from "react";
+const API=import.meta.env.VITE_API_URL
 
 interface Content {
   contentId: string;
@@ -34,7 +35,7 @@ const AddSubContent = () => {
   const [loading, setLoading] = useState(false);
 
   const getSemester = async () => {
-    const res = await fetch("http://localhost:3000/api/sem/getSemester", {
+    const res = await fetch(`${API}/sem/getSemester`, {
       credentials: "include",
     });
 
@@ -45,7 +46,7 @@ const AddSubContent = () => {
 
   const getSubjects = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/sub/getsubject", {
+      const response = await fetch(`${API}/sub/getsubject`, {
         method: "GET",
         credentials: "include",
       });
@@ -66,7 +67,7 @@ const AddSubContent = () => {
   const getContents = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/content/getcontent",
+        `${API}/content/getcontent`,
         {
           method: "GET",
           credentials: "include",
@@ -115,7 +116,7 @@ const AddSubContent = () => {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:3000/api/subcontent/createsubcontent",
+        `${API}/subcontent/createsubcontent`,
         {
           method: "POST",
           credentials: "include",

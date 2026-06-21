@@ -1,5 +1,9 @@
 ﻿import { useEffect, useState } from "react";
 
+
+const API=import.meta.env.VITE_API_URL
+
+
 interface Subject {
   subjectId: string;
   subjectName: string;
@@ -27,7 +31,7 @@ const AddContent = () => {
 
   const getSubjects = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/sub/getsubject", {
+      const response = await fetch(`${API}/sub/getsubject`, {
         method: "GET",
         credentials: "include",
       });
@@ -48,7 +52,7 @@ const AddContent = () => {
   const getSemester=async()=>{
    
      try {
-      const response=await fetch("http://localhost:3000/api/sem/getSemester",{
+      const response=await fetch(`${API}/sem/getSemester`,{
         method:"GET",
         credentials:"include"
       })
@@ -100,7 +104,7 @@ const AddContent = () => {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:3000/api/content/createcontent",
+        `${API}/content/createcontent`,
         {
           method: "POST",
 

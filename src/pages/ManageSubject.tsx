@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface Subject {
   subjectId: number;
   courseCode: string;
@@ -26,7 +29,7 @@ const ManageSubject = () => {
   // Fetch all subjects
   const getSubjects = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/sub/getsubject", {
+      const response = await fetch(`${API}/sub/getsubject`, {
         method: "GET",
         credentials: "include",
       });
@@ -77,7 +80,7 @@ const ManageSubject = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/sub/updatesub/${editingId}`,
+        `${API}/sub/updatesub/${editingId}`,
         {
           method: "PUT",
           headers: {
@@ -122,7 +125,7 @@ const ManageSubject = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/sub/block/${id}`,
+        `${API}/sub/block/${id}`,
         {
           method: "POST",
           credentials: "include",

@@ -13,6 +13,9 @@ import { MdOutlineLeaderboard } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { FaFilePdf } from "react-icons/fa";
 
+const API=import.meta.env.VITE_API_URL
+
+
 const AdminLayout = () => {
   const [sidebar, setSideBar] = useState(true);
   const navigate=useNavigate();
@@ -112,7 +115,7 @@ const AdminLayout = () => {
  const logout = async () => {
   try {
     const response = await fetch(
-      "http://localhost:3000/api/user/logout",
+      `${API}/user/logout`,
       {
         method: "POST",
         credentials: "include",

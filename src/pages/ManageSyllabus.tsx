@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface Syllabus {
   syallabusId: string;
   syllabusName: string;
@@ -21,7 +24,7 @@ const ManageSyllabus = () => {
   const getSyllabus = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/syllabus/getsyllabus",
+        `${API}/syllabus/getsyllabus`,
         {
           credentials: "include",
         },
@@ -84,7 +87,7 @@ const ManageSyllabus = () => {
     }
 
     const response = await fetch(
-      `http://localhost:3000/api/syllabus/updatesyllabus/${editingId}`,
+      `${API}/syllabus/updatesyllabus/${editingId}`,
       {
         method: "PUT",
         credentials: "include",
@@ -112,7 +115,7 @@ const ManageSyllabus = () => {
 
   const changeStatus = async (id: string, type: "block" | "unblock") => {
     const response = await fetch(
-      `http://localhost:3000/api/syllabus/${type}/${id}`,
+      `${API}/syllabus/${type}/${id}`,
       {
         method: "POST",
         credentials: "include",

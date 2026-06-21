@@ -1,4 +1,7 @@
 ﻿import { useState } from "react";
+const API=import.meta.env.VITE_API_URL
+
+
 
 const AddSemester = () => {
   const [semesterNumber, setSemesterNumber] = useState("");
@@ -26,7 +29,7 @@ const AddSemester = () => {
         text: "",
       });
 
-      const response = await fetch("http://localhost:3000/api/sem/createSem", {
+      const response = await fetch(`${API}/sem/createSem`, {
         method: "POST",
         credentials: "include",
         headers: {

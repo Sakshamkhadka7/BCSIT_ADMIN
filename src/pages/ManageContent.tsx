@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface Content {
   contentId: number;
   chapterNumber: string;
@@ -23,7 +26,7 @@ const ManageContent = () => {
   const getContents = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/content/getcontent",
+        `${API}/content/getcontent`,
         {
           method: "GET",
           credentials: "include",
@@ -71,7 +74,7 @@ const ManageContent = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/content/updatecontent/${editingId}`,
+        `${API}/content/updatecontent/${editingId}`,
         {
           method: "PUT",
           headers: {
@@ -114,7 +117,7 @@ const ManageContent = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/content/block/${id}`,
+        `${API}/content/block/${id}`,
         {
           method: "POST",
           credentials: "include",

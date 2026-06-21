@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface Semester {
   semesterId: string;
   semesterNumber: number;
@@ -44,7 +47,7 @@ const AddNote = () => {
 
 
   const getSemester = async () => {
-    const res = await fetch("http://localhost:3000/api/sem/getSemester", {
+    const res = await fetch(`${API}/sem/getSemester`, {
       credentials: "include",
     });
 
@@ -55,7 +58,7 @@ const AddNote = () => {
 
 
   const getSubjects = async () => {
-    const res = await fetch("http://localhost:3000/api/sub/getsubject", {
+    const res = await fetch(`${API}/sub/getsubject`, {
       credentials: "include",
     });
 
@@ -66,7 +69,7 @@ const AddNote = () => {
   };
 
   const getContents = async () => {
-    const res = await fetch("http://localhost:3000/api/content/getcontent", {
+    const res = await fetch(`${API}/content/getcontent`, {
       credentials: "include",
     });
 
@@ -180,7 +183,7 @@ const AddNote = () => {
 
     setLoading(true);
 
-    const res = await fetch("http://localhost:3000/api/note/addnote", {
+    const res = await fetch(`${API}/note/addnote`, {
       method: "POST",
       credentials: "include",
       body: payload,

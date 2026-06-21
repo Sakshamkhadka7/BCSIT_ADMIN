@@ -1,4 +1,6 @@
 ﻿import { useEffect, useState } from "react";
+const API=import.meta.env.VITE_API_URL
+
 
 interface User {
   userId: string;
@@ -16,7 +18,7 @@ const ManageUser = () => {
   const getAllUser = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/user/getalluser",
+        `${API}/user/getalluser`,
         {
           method: "GET",
           credentials: "include",
@@ -45,7 +47,7 @@ const ManageUser = () => {
   }, []);
 
   const blockUser = async (id: string) => {
-    const response = await fetch(`http://localhost:3000/api/user/block/${id}`, {
+    const response = await fetch(`${API}/user/block/${id}`, {
       method: "POST",
       credentials: "include",
     });
@@ -63,7 +65,7 @@ const ManageUser = () => {
 
   const unBlockUser = async (id: string) => {
     const response = await fetch(
-      `http://localhost:3000/api/user/unblock/${id}`,
+      `${API}/user/unblock/${id}`,
       {
         method: "POST",
         credentials: "include",

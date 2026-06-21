@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface Note {
   noteId: number;
   topic: string;
@@ -22,7 +25,7 @@ const NoteManage = () => {
   const getNotes = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/note/getNote",
+        `${API}/note/getNote`,
         {
           method: "GET",
           credentials: "include",
@@ -94,7 +97,7 @@ const NoteManage = () => {
       }
 
       const response = await fetch(
-        `http://localhost:3000/api/note/updateNote/${editingId}`,
+        `${API}/note/updateNote/${editingId}`,
         {
           method: "PUT",
           credentials: "include",
@@ -134,7 +137,7 @@ const NoteManage = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/note/block/${id}`,
+        `${API}/note/block/${id}`,
         {
           method: "POST",
           credentials: "include",

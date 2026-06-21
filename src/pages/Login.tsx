@@ -1,6 +1,8 @@
 ﻿import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AdminContext } from "../context/AdminProvider";
+const API=import.meta.env.VITE_API_URL
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ const Login = () => {
     if (!validateForm()) return;
 
     try {
-      const res = await fetch("http://localhost:3000/api/user/login", {
+      const res = await fetch(`${API}/user/login`, {
         method: "POST",
         credentials: "include",
         headers: {

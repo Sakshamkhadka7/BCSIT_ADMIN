@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface SubContent {
   subContentId: number;
   topicName: string;
@@ -23,7 +26,7 @@ const ManageSubContent = () => {
   const getSubContents = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/subcontent/getsubcontent",
+        `${API}/subcontent/getsubcontent`,
         {
           method: "GET",
           credentials: "include",
@@ -74,7 +77,7 @@ const ManageSubContent = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/subcontent/updatesubcontent/${editingId}`,
+        `${API}/subcontent/updatesubcontent/${editingId}`,
         {
           method: "PUT",
           headers: {
@@ -117,7 +120,7 @@ const ManageSubContent = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/subcontent/block/${id}`,
+        `${API}/subcontent/block/${id}`,
         {
           method: "POST",
           credentials: "include",

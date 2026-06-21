@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface Subject {
   subjectId: string;
   subjectName: string;
@@ -27,7 +30,7 @@ const AddSyllabus = () => {
   });
 
   const getSemester = async () => {
-    const res = await fetch("http://localhost:3000/api/sem/getSemester", {
+    const res = await fetch(`${API}/sem/getSemester`, {
       credentials: "include",
     });
 
@@ -37,7 +40,7 @@ const AddSyllabus = () => {
   };
 
   const getSubjects = async () => {
-    const res = await fetch("http://localhost:3000/api/sub/getsubject", {
+    const res = await fetch(`${API}/sub/getsubject`, {
       credentials: "include",
     });
 
@@ -105,7 +108,7 @@ const AddSyllabus = () => {
       payload.append("syllabus", formData.syllabus);
 
       const res = await fetch(
-        "http://localhost:3000/api/syllabus/createsyllabus",
+        `${API}/syllabus/createsyllabus`,
         {
           method: "POST",
           credentials: "include",

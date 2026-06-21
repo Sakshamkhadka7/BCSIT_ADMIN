@@ -1,5 +1,8 @@
 ﻿import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 
+const API=import.meta.env.VITE_API_URL
+
+
 interface QuizQuestion {
   quizQuestionId: number;
   question: string;
@@ -30,7 +33,7 @@ const ManageQuizQuestion = () => {
   const getQuestions = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/quizques/getallquestion",
+        `${API}/quizques/getallquestion`,
         {
           method: "GET",
           credentials: "include",
@@ -83,7 +86,7 @@ const ManageQuizQuestion = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/quizques/updatequizques/${editingId}`,
+        `${API}/quizques/updatequizques/${editingId}`,
         {
           method: "PUT",
           headers: {
@@ -129,7 +132,7 @@ const ManageQuizQuestion = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/quizques/block/${id}`,
+        `${API}/quizques/block/${id}`,
         {
           method: "POST",
           credentials: "include",

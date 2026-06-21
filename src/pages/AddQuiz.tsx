@@ -1,4 +1,6 @@
 ﻿import { useEffect, useState, ChangeEvent, FormEvent } from "react";
+const API=import.meta.env.VITE_API_URL
+
 
 interface Subject {
   subjectId: number;
@@ -36,7 +38,7 @@ const AddQuiz = () => {
   const getSubjects = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/sub/getsubject",
+        `${API}/sub/getsubject`,
         {
           method: "GET",
           credentials: "include",
@@ -59,7 +61,7 @@ const AddQuiz = () => {
    const getSemester = async () => {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/sem/getSemester",
+        `${API}/sem/getSemester`,
         {
           method: "GET",
           credentials: "include",
@@ -100,7 +102,7 @@ const AddQuiz = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/quiz/createquiz",
+        `${API}/quiz/createquiz`,
         {
           method: "POST",
           headers: {
