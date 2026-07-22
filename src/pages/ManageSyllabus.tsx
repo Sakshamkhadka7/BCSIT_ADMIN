@@ -1,4 +1,4 @@
-﻿import React, { useState , useEffect} from "react";
+﻿import  { useState , useEffect} from "react";
 import type { ChangeEvent, FormEvent } from "react";
 
 
@@ -14,7 +14,7 @@ interface Syllabus {
 
 const ManageSyllabus = () => {
   const [syllabus, setSyllabus] = useState<Syllabus[]>([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const [editingId, setEditingId] = useState<string | null>(null);
 
